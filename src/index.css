@@ -1,0 +1,52 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 10;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+a {
+  color: white;
+}
+
+@font-face {
+  font-family: runeFont;
+  src: url(D2Runes.ttf);
+}
+
+.rune-ttf {
+  font-family: runeFont;
+}
+
+.rune-text {
+  font-family: runeFont;
+  position: relative;
+  top: -70px;
+  left: 25px;
+  height: auto;
+  width: auto;
+  font-size: 48px;
+}
+
+/*.rune-svg {*/
+/*  !*margin: 0 auto;*!*/
+/*  width: 100px;*/
+/*  height: 100px;*/
+/*}*/
+
+.rune-svg polygon {
+  fill: #4c4942;
+  stroke: #2a2d28;
+  stroke-width: 2;
+}

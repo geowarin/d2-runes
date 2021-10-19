@@ -1,0 +1,548 @@
+[
+  {
+    "name": "Ancient's Pledge",
+    "runes": ["Ral", "Ort", "Tal"],
+    "sockets": "3",
+    "type": "Shields",
+    "level": 21
+  },
+  {
+    "name": "Black",
+    "runes": ["Thul", "Io", "Nef"],
+    "sockets": "3",
+    "type": "Clubs/Hammers/Maces",
+    "level": 35
+  },
+  {
+    "name": "Fury",
+    "runes": ["Jah", "Gul", "Eth"],
+    "sockets": "3",
+    "type": "Melee Weapons",
+    "level": 65
+  },
+  {
+    "name": "Holy Thunder",
+    "runes": ["Eth", "Ral", "Ort", "Tal"],
+    "sockets": "4",
+    "type": "Scepters",
+    "level": 21
+  },
+  {
+    "name": "Honor",
+    "runes": ["Amn", "El", "Ith", "Tir", "Sol"],
+    "sockets": "5",
+    "type": "Melee",
+    "level": 27
+  },
+  {
+    "name": "King's Grace",
+    "runes": ["Amn", "Ral", "Thul"],
+    "sockets": "3",
+    "type": "Swords/Scepters",
+    "level": 25
+  },
+  {
+    "name": "Leaf",
+    "runes": ["Tir", "Ral"],
+    "sockets": "2",
+    "type": "Staves (Not Orbs)",
+    "level": 19
+  },
+  {
+    "name": "Lionheart",
+    "runes": ["Hel", "Lum", "Fal"],
+    "sockets": "3",
+    "type": "Body Armor",
+    "level": 41
+  },
+  {
+    "name": "Lore",
+    "runes": ["Ort", "Sol"],
+    "sockets": "2",
+    "type": "Helms",
+    "level": 27
+  },
+  {
+    "name": "Malice",
+    "runes": ["Ith", "El", "Eth"],
+    "sockets": "3",
+    "type": "Melee Weapons",
+    "level": 15
+  },
+  {
+    "name": "Melody",
+    "runes": ["Shael", "Ko", "Nef"],
+    "sockets": "3",
+    "type": "Missile Weapons",
+    "level": 39
+  },
+  {
+    "name": "Memory",
+    "runes": ["Lum", "Io", "Sol", "Eth"],
+    "sockets": "4",
+    "type": "Staves (Not Orbs)",
+    "level": 37
+  },
+  {
+    "name": "Nadir",
+    "runes": ["Nef", "Tir"],
+    "sockets": "2",
+    "type": "Helms",
+    "level": 13
+  },
+  {
+    "name": "Radiance",
+    "runes": ["Nef", "Sol", "Ith"],
+    "sockets": "3",
+    "type": "Helms",
+    "level": 27
+  },
+  {
+    "name": "Rhyme",
+    "runes": ["Shael", "Eth"],
+    "sockets": "2",
+    "type": "Shields",
+    "level": 29
+  },
+  {
+    "name": "Silence",
+    "runes": ["Dol", "Eld", "Hel", "Ist", "Tir", "Vex"],
+    "sockets": "6",
+    "type": "Weapons",
+    "level": 55
+  },
+  {
+    "name": "Smoke",
+    "runes": ["Nef", "Lum"],
+    "sockets": "2",
+    "type": "Body Armor",
+    "level": 37
+  },
+  {
+    "name": "Stealth",
+    "runes": ["Tal", "Eth"],
+    "sockets": "2",
+    "type": "Body Armor",
+    "level": 17
+  },
+  {
+    "name": "Steel",
+    "runes": ["Tir", "El"],
+    "sockets": "2",
+    "type": "Swords/Axes/Maces",
+    "level": 13
+  },
+  {
+    "name": "Strength",
+    "runes": ["Amn", "Tir"],
+    "sockets": "2",
+    "type": "Melee Weapons",
+    "level": 25
+  },
+  {
+    "name": "Venom",
+    "runes": ["Tal", "Dol", "Mal"],
+    "sockets": "3",
+    "type": "Weapons",
+    "level": 49
+  },
+  {
+    "name": "Wealth",
+    "runes": ["Lem", "Ko", "Tir"],
+    "sockets": "3",
+    "type": "Body Armor",
+    "level": 43
+  },
+  {
+    "name": "White",
+    "runes": ["Dol", "Io"],
+    "sockets": "2",
+    "type": "Wands",
+    "level": 35
+  },
+  {
+    "name": "Zephyr",
+    "runes": ["Ort", "Eth"],
+    "sockets": "2",
+    "type": "Missile Weapons",
+    "level": 21
+  },
+  {
+    "name": "Beast",
+    "runes": ["Ber", "Tir", "Um", "Mal", "Lum"],
+    "sockets": "5",
+    "type": "Axes/Scepters/Hammers",
+    "level": 63
+  },
+  {
+    "name": "Bramble",
+    "runes": ["Ral", "Ohm", "Sur", "Eth"],
+    "sockets": "4",
+    "type": "Body Armor",
+    "level": 61
+  },
+  {
+    "name": "Breath of the Dying",
+    "runes": ["Vex", "Hel", "El", "Eld", "Zod", "Eth"],
+    "sockets": "6",
+    "type": "Weapons",
+    "level": 69
+  },
+  {
+    "name": "Call To Arms",
+    "runes": ["Amn", "Ral", "Mal", "Ist", "Ohm"],
+    "sockets": "5",
+    "type": "Weapons",
+    "level": 57
+  },
+  {
+    "name": "Chains of Honor",
+    "runes": ["Dol", "Um", "Ber", "Ist"],
+    "sockets": "4",
+    "type": "Body Armor",
+    "level": 63
+  },
+  {
+    "name": "Chaos",
+    "runes": ["Fal", "Ohm", "Um"],
+    "sockets": "3",
+    "type": "Claws",
+    "level": 57
+  },
+  {
+    "name": "Crescent Moon",
+    "runes": ["Shael", "Um", "Tir"],
+    "sockets": "3",
+    "type": "Axes/Swords/Polearms",
+    "level": 47
+  },
+  {
+    "name": "Delirium",
+    "runes": ["Lem", "Ist", "Io"],
+    "sockets": "3",
+    "type": "Helms",
+    "level": 51
+  },
+  {
+    "name": "Doom",
+    "runes": ["Hel", "Ohm", "Um", "Lo", "Cham"],
+    "sockets": "5",
+    "type": "Axes/Polearms/Hammers",
+    "level": 67
+  },
+  {
+    "name": "Duress",
+    "runes": ["Shael", "Um", "Thul"],
+    "sockets": "3",
+    "type": "Body Armor",
+    "level": 47
+  },
+  {
+    "name": "Enigma",
+    "runes": ["Jah", "Ith", "Ber"],
+    "sockets": "3",
+    "type": "Body Armor",
+    "level": 65
+  },
+  {
+    "name": "Eternity",
+    "runes": ["Amn", "Ber", "Ist", "Sol", "Sur"],
+    "sockets": "5",
+    "type": "Melee Weapons",
+    "level": 63
+  },
+  {
+    "name": "Exile",
+    "runes": ["Vex", "Ohm", "Ist", "Dol"],
+    "sockets": "4",
+    "type": "Shields (Paladin only)",
+    "level": 57
+  },
+  {
+    "name": "Famine",
+    "runes": ["Fal", "Ohm", "Ort", "Jah"],
+    "sockets": "4",
+    "type": "Axes/Hammers",
+    "level": 65
+  },
+  {
+    "name": "Gloom",
+    "runes": ["Fal", "Um", "Pul"],
+    "sockets": "3",
+    "type": "Body Armor",
+    "level": 47
+  },
+  {
+    "name": "Hand of Justice",
+    "runes": ["Sur", "Cham", "Amn", "Lo"],
+    "sockets": "4",
+    "type": "Weapons",
+    "level": 67
+  },
+  {
+    "name": "Heart of the Oak",
+    "runes": ["Ko", "Vex", "Pul", "Thul"],
+    "sockets": "4",
+    "type": "Staves/Maces",
+    "level": 55
+  },
+  {
+    "name": "Kingslayer",
+    "runes": ["Mal", "Um", "Gul", "Fal"],
+    "sockets": "4",
+    "type": "Swords/Axes",
+    "level": 53
+  },
+  {
+    "name": "Passion",
+    "runes": ["Dol", "Ort", "Eld", "Lem"],
+    "sockets": "4",
+    "type": "Weapons",
+    "level": 43
+  },
+  {
+    "name": "Prudence",
+    "runes": ["Mal", "Tir"],
+    "sockets": "2",
+    "type": "Body Armor",
+    "level": 49
+  },
+  {
+    "name": "Sanctuary",
+    "runes": ["Ko", "Ko", "Mal"],
+    "sockets": "3",
+    "type": "Shields",
+    "level": 49
+  },
+  {
+    "name": "Splendor",
+    "runes": ["Eth", "Lum"],
+    "sockets": "2",
+    "type": "Shields",
+    "level": 37
+  },
+  {
+    "name": "Stone",
+    "runes": ["Shael", "Um", "Pul", "Lum"],
+    "sockets": "4",
+    "type": "Body Armor",
+    "level": 47
+  },
+  {
+    "name": "Wind",
+    "runes": ["Sur", "El"],
+    "sockets": "2",
+    "type": "Melee Weapons",
+    "level": 61
+  },
+  {
+    "name": "Brand",
+    "runes": ["Jah", "Lo", "Mal", "Gul"],
+    "sockets": "4",
+    "type": "Missile Weapons",
+    "level": 65
+  },
+  {
+    "name": "Death",
+    "runes": ["Hel", "El", "Vex", "Ort", "Gul"],
+    "sockets": "5",
+    "type": "Swords/Axes",
+    "level": 55
+  },
+  {
+    "name": "Destruction",
+    "runes": ["Vex", "Lo", "Ber", "Jah", "Ko"],
+    "sockets": "5",
+    "type": "Polearms/Swords",
+    "level": 65
+  },
+  {
+    "name": "Dragon",
+    "runes": ["Sur", "Lo", "Sol"],
+    "sockets": "3",
+    "type": "Body Armor/Shields",
+    "level": 61
+  },
+  {
+    "name": "Dream",
+    "runes": ["Io", "Jah", "Pul"],
+    "sockets": "3",
+    "type": "Helms/Shields",
+    "level": 65
+  },
+  {
+    "name": "Edge",
+    "runes": ["Tir", "Tal", "Amn"],
+    "sockets": "3",
+    "type": "Missile Weapons",
+    "level": 25
+  },
+  {
+    "name": "Faith",
+    "runes": ["Ohm", "Jah", "Lem", "Eld"],
+    "sockets": "4",
+    "type": "Missile Weapons",
+    "level": 65
+  },
+  {
+    "name": "Fortitude",
+    "runes": ["El", "Sol", "Dol", "Lo"],
+    "sockets": "4",
+    "type": "Weapons/Body Armor",
+    "level": 59
+  },
+  {
+    "name": "Grief",
+    "runes": ["Eth", "Tir", "Lo", "Mal", "Ral"],
+    "sockets": "5",
+    "type": "Swords/Axes",
+    "level": 59
+  },
+  {
+    "name": "Harmony",
+    "runes": ["Tir", "Ith", "Sol", "Ko"],
+    "sockets": "4",
+    "type": "Missile Weapons",
+    "level": 39
+  },
+  {
+    "name": "Ice",
+    "runes": ["Amn", "Shael", "Jah", "Lo"],
+    "sockets": "4",
+    "type": "Missile Weapons",
+    "level": 65
+  },
+  {
+    "name": "Infinity",
+    "runes": ["Ber", "Mal", "Ber", "Ist"],
+    "sockets": "4",
+    "type": "Polearms",
+    "level": 63
+  },
+  {
+    "name": "Insight",
+    "runes": ["Ral", "Tir", "Tal", "Sol"],
+    "sockets": "4",
+    "type": "Polearms/Staves",
+    "level": 27
+  },
+  {
+    "name": "Last Wish",
+    "runes": ["Jah", "Mal", "Jah", "Sur", "Jah", "Ber"],
+    "sockets": "6",
+    "type": "Swords/Hammers/Axes",
+    "level": 65
+  },
+  {
+    "name": "Lawbringer",
+    "runes": ["Amn", "Lem", "Ko"],
+    "sockets": "3",
+    "type": "Swords/Hammers/Scepters",
+    "level": 43
+  },
+  {
+    "name": "Oath",
+    "runes": ["Shael", "Pul", "Mal", "Lum"],
+    "sockets": "4",
+    "type": "Swords/Axes/Maces",
+    "level": 49
+  },
+  {
+    "name": "Obedience",
+    "runes": ["Hel", "Ko", "Thul", "Eth", "Fal"],
+    "sockets": "5",
+    "type": "Polearms",
+    "level": 41
+  },
+  {
+    "name": "Phoenix",
+    "runes": ["Vex", "Vex", "Lo", "Jah"],
+    "sockets": "4",
+    "type": "Weapons/Shields",
+    "level": 65
+  },
+  {
+    "name": "Pride",
+    "runes": ["Cham", "Sur", "Io", "Lo"],
+    "sockets": "4",
+    "type": "Polearms",
+    "level": 67
+  },
+  {
+    "name": "Rift",
+    "runes": ["Hel", "Ko", "Lem", "Gul"],
+    "sockets": "4",
+    "type": "Polearms/Scepters",
+    "level": 53
+  },
+  {
+    "name": "Spirit",
+    "runes": ["Tal", "Thul", "Ort", "Amn"],
+    "sockets": "4",
+    "type": "Swords/Shields",
+    "level": 25
+  },
+  {
+    "name": "Voice of Reason",
+    "runes": ["Lem", "Ko", "El", "Eld"],
+    "sockets": "4",
+    "type": "Swords/Maces",
+    "level": 43
+  },
+  {
+    "name": "Wrath",
+    "runes": ["Pul", "Lum", "Ber", "Mal"],
+    "sockets": "4",
+    "type": "Missile Weapons",
+    "level": 63
+  },
+  {
+    "name": "Bone",
+    "runes": ["Sol", "Um", "Um"],
+    "sockets": "3",
+    "type": "Body Armor",
+    "level": 47
+  },
+  {
+    "name": "Enlightenment",
+    "runes": ["Pul", "Ral", "Sol"],
+    "sockets": "3",
+    "type": "Body Armor",
+    "level": 45
+  },
+  {
+    "name": "Myth",
+    "runes": ["Hel", "Amn", "Nef"],
+    "sockets": "3",
+    "type": "Body Armor",
+    "level": 25
+  },
+  {
+    "name": "Peace",
+    "runes": ["Shael", "Thul", "Amn"],
+    "sockets": "3",
+    "type": "Body Armor",
+    "level": 29
+  },
+  {
+    "name": "Principle",
+    "runes": ["Ral", "Gul", "Eld"],
+    "sockets": "3",
+    "type": "Body Armor",
+    "level": 53
+  },
+  {
+    "name": "Rain",
+    "runes": ["Ort", "Mal", "Ith"],
+    "sockets": "3",
+    "type": "Body Armor",
+    "level": 49
+  },
+  {
+    "name": "Treachery",
+    "runes": ["Shael", "Thul", "Lem"],
+    "sockets": "3",
+    "type": "Body Armor",
+    "level": 43
+  }
+]
