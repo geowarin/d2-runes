@@ -3,7 +3,7 @@ body {
   height: 100%;
   width: 100%;
   padding: 0;
-  margin: 10;
+  margin: 5px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -25,10 +25,6 @@ a {
   src: url(D2Runes.ttf);
 }
 
-.rune-ttf {
-  font-family: runeFont;
-}
-
 .rune-text {
   font-family: runeFont;
   position: relative;
@@ -39,14 +35,20 @@ a {
   font-size: 48px;
 }
 
-/*.rune-svg {*/
-/*  !*margin: 0 auto;*!*/
-/*  width: 100px;*/
-/*  height: 100px;*/
-/*}*/
-
 .rune-svg polygon {
   fill: #4c4942;
   stroke: #2a2d28;
   stroke-width: 2;
 }
+
+.fill-color g {
+  fill: black;
+}
+
+.noisy {
+  width: 300px;
+  background:
+    radial-gradient(rgba(255,255,255,.5), rgba(0,0,0,.5)),
+    url('/noise.svg');
+}
+
