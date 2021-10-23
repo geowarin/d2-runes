@@ -1,0 +1,9 @@
+{
+  "transform": {
+    "^.+\\.tsx?$": "esbuild-runner/jest"
+  },
+  "moduleNameMapper": {
+    "\\?(css|svg)$": "identity-obj-proxy",
+    "^@/(.*)$": "<rootDir>/src/$1"
+  }
+}

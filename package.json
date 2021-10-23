@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "test": "jest"
   },
   "dependencies": {
     "preact": "^10.5.13",
@@ -15,8 +16,12 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.0.0",
+    "@types/jest": "^27.0.2",
     "@types/react-table": "^7.7.7",
     "autoprefixer": "^10.3.7",
+    "esbuild-runner": "^2.2.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.3.1",
     "postcss": "^8.3.11",
     "tailwindcss": "^2.2.17",
     "typescript": "^4.3.2",

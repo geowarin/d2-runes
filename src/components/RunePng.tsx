@@ -6,13 +6,29 @@ export const selectedRuneState = atom<string | undefined>({
   default: "Tir",
 });
 
-export function RunePng({ name }: { name: string }): JSX.Element {
+export function SelectableRunePng({ name }: { name: string }): JSX.Element {
   const [selectedRune, setSelectedRune] = useRecoilState(selectedRuneState);
   const over = selectedRune === name;
   return (
     <img
       style={over ? { filter: "invert(75%)" } : {}}
       onMouseOver={() => setSelectedRune(name)}
+      // onMouseOut={() => setSelectedRune(undefined)}
+      src={`/img/runes/${name.toLowerCase()}.png`}
+      width={30}
+      height={30}
+      alt={name}
+      title={name}
+    />
+  );
+}
+
+export function RunePng({ name }: { name: string }) {
+  const [selectedRune] = useRecoilState(selectedRuneState);
+  const over = selectedRune === name;
+  return (
+    <img
+      style={over ? { filter: "invert(75%)" } : {}}
       // onMouseOut={() => setSelectedRune(undefined)}
       src={`/img/runes/${name.toLowerCase()}.png`}
       width={30}

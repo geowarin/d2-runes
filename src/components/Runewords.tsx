@@ -18,6 +18,10 @@ export function Runewords(): JSX.Element {
         accessor: (runeword) => runeword.name,
       },
       {
+        Header: "Level",
+        accessor: (runeword) => runeword.level,
+      },
+      {
         Header: "Type",
         accessor: (runeword) =>
           runeword.type.split("/").map((type) => (
@@ -32,7 +36,10 @@ export function Runewords(): JSX.Element {
         accessor: (runeword) => (
           <div className="flex">
             {runeword.runes.map((rune) => (
-              <RunePng name={rune} />
+              <div className="text-center">
+                <RunePng name={rune} />
+                {rune}
+              </div>
             ))}
           </div>
         ),
