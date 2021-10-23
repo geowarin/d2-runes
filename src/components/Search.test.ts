@@ -24,4 +24,17 @@ describe("parseSearchString", function () {
       },
     ]);
   });
+  it("should parse type + text", function () {
+    const searchFilters = parseSearchString("stuff type:Melee staff");
+    expect(searchFilters).toEqual([
+      {
+        type: "type",
+        value: "Melee",
+      },
+      {
+        type: "text",
+        value: "stuff staff",
+      },
+    ]);
+  });
 });

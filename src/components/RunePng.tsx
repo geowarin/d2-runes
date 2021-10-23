@@ -3,7 +3,7 @@ import { atom, useRecoilState } from "recoil";
 
 export const selectedRuneState = atom<string | undefined>({
   key: "selectedRune",
-  default: "Tir",
+  default: undefined,
 });
 
 export function SelectableRunePng({ name }: { name: string }): JSX.Element {
@@ -12,7 +12,7 @@ export function SelectableRunePng({ name }: { name: string }): JSX.Element {
   return (
     <img
       style={over ? { filter: "invert(75%)" } : {}}
-      onMouseOver={() => setSelectedRune(name)}
+      onClick={() => setSelectedRune(name)}
       // onMouseOut={() => setSelectedRune(undefined)}
       src={`/img/runes/${name.toLowerCase()}.png`}
       width={30}

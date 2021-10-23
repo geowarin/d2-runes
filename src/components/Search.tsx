@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { atom } from "recoil";
+import { atom, useRecoilState } from "recoil";
 
-const FilterTypes = ["type", "text"];
+const FilterTypes = ["type", "text", "rune"] as const;
 type FilterType = typeof FilterTypes[number];
 
-interface SearchFilter {
+export interface SearchFilter {
   type: FilterType;
   value: string;
 }
 
-atom<SearchFilter[]>({
+export const searchFilterState = atom<SearchFilter[]>({
   key: "searchFilters",
   default: [],
 });
@@ -20,9 +20,9 @@ export function parseSearchString(search: string): SearchFilter[] {
 
   search.split(" ").forEach((word) => {
     const [filter, ...rest] = word.split(":");
-    if (FilterTypes.includes("filter")) {
+    if (FilterTypes.includes(filter as FilterType)) {
       filters.push({
-        type: filter,
+        type: filter as FilterType,
         value: rest.join(),
       });
     } else if (word !== "") {
@@ -40,12 +40,15 @@ export function parseSearchString(search: string): SearchFilter[] {
 
 export function Search(): JSX.Element {
   const [value, setValue] = useState("");
+  const [, setSearchFilters] = useRecoilState(searchFilterState);
+
   return (
     <div className="self-center m-2 text-black">
       <input
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            console.log("toto");
+            const searchFilters = parseSearchString(value);
+            setSearchFilters(searchFilters);
           }
         }}
         value={value}
