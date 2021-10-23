@@ -1,20 +1,20 @@
 import runes from "./data/runes.json";
-import { createElement } from "preact";
 import React from "preact/compat";
 import { RunePng } from "./components/RunePng";
-import { Rune } from "./components/Rune";
-import JSX = createElement.JSX;
+
+import { RecoilRoot } from "recoil";
+import { Runewords } from "./components/Runewords";
 
 function RuneList(): JSX.Element {
   return (
-    <ul>
+    <>
       {runes.map((rune) => (
-        <li>
+        <div className="flex justify-center">
           <RunePng name={rune.name} />
           {rune.name}
-        </li>
+        </div>
       ))}
-    </ul>
+    </>
   );
 }
 
@@ -36,17 +36,16 @@ function Triangle(): JSX.Element {
 }
 
 export function App() {
-  const rune = "Tir";
   return (
-    <div style={{ display: "flex" }}>
-      <div
-        className="noisy"
-        style={{ display: "flex", justifyContent: "space-around" }}
-      >
-        <Rune name={rune} />
+    <RecoilRoot>
+      <div className="flex">
+        <div className="w-1/3">
+          <RuneList />
+        </div>
+        <div className="w-2/3">
+          <Runewords />
+        </div>
       </div>
-
-      <Triangle />
-    </div>
+    </RecoilRoot>
   );
 }
