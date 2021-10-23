@@ -10,10 +10,12 @@
     "preact": "^10.5.13",
     "prettier": "^2.4.1",
     "react-svg": "^14.0.16",
+    "react-table": "^7.7.0",
     "recoil": "^0.4.1"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.0.0",
+    "@types/react-table": "^7.7.7",
     "autoprefixer": "^10.3.7",
     "postcss": "^8.3.11",
     "tailwindcss": "^2.2.17",
