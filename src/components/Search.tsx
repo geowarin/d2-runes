@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { atom, useRecoilState } from "recoil";
+import React, { useEffect, useState } from "react";
+import { atom, DefaultValue, selector, useRecoilState } from "recoil";
 
 const FilterTypes = ["type", "text", "rune"] as const;
 type FilterType = typeof FilterTypes[number];
@@ -9,46 +9,87 @@ export interface SearchFilter {
   value: string;
 }
 
-export const searchFilterState = atom<SearchFilter[]>({
-  key: "searchFilters",
-  default: [],
+export const searchStringState = atom<string>({
+  key: "searchStringState",
+  default: "",
 });
 
-export function parseSearchString(search: string): SearchFilter[] {
-  const text: string[] = [];
-  const filters: SearchFilter[] = [];
+export const searchFilterState = selector<SearchFilter[]>({
+  key: "searchFilterState",
+  get: ({ get }) => {
+    const search = get(searchStringState);
+    return parseSearchString(search);
+  },
+  set: ({ set }, newValue) => {
+    set(
+      searchStringState,
+      newValue instanceof DefaultValue
+        ? newValue
+        : serializeSearchFilters(newValue)
+    );
+  },
+});
 
-  search.split(" ").forEach((word) => {
-    const [filter, ...rest] = word.split(":");
-    if (FilterTypes.includes(filter as FilterType)) {
-      filters.push({
-        type: filter as FilterType,
-        value: rest.join(),
-      });
-    } else if (word !== "") {
-      text.push(word);
-    }
-  });
-  if (text.length > 0) {
-    filters.push({
-      type: "text",
-      value: text.join(" "),
-    });
+export function serializeSearchFilters(searchFilter: SearchFilter[]): string {
+  return searchFilter
+    .map((filter) => {
+      if (filter.type === "text") {
+        return `${filter.value}`;
+      }
+      return `${filter.type}:${filter.value}`;
+    })
+    .join(" ");
+}
+
+export function parseSearchString(search: string): SearchFilter[] {
+  return search
+    .split(" ")
+    .filter((s) => s !== "")
+    .map((word) => {
+      const [filter, ...rest] = word.split(":");
+      if (FilterTypes.includes(filter as FilterType)) {
+        return {
+          type: filter as FilterType,
+          value: rest.join(),
+        };
+      }
+      return {
+        type: "text" as const,
+        value: word,
+      };
+    })
+    .reduce(mergeConsecutiveTextFilters, [] as SearchFilter[]);
+}
+
+function mergeConsecutiveTextFilters(
+  acc: SearchFilter[],
+  curr: SearchFilter
+): SearchFilter[] {
+  const lastFilter = acc[acc.length - 1];
+  if (
+    curr.type === "text" &&
+    lastFilter !== undefined &&
+    lastFilter.type === "text"
+  ) {
+    lastFilter.value += " " + curr.value;
+  } else {
+    acc.push(curr);
   }
-  return filters;
+  return acc;
 }
 
 export function Search(): JSX.Element {
+  const [search, setSearch] = useRecoilState(searchStringState);
   const [value, setValue] = useState("");
-  const [, setSearchFilters] = useRecoilState(searchFilterState);
-
+  useEffect(() => {
+    setValue(search);
+  }, [search]);
   return (
     <div className="self-center m-2 text-black">
       <input
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            const searchFilters = parseSearchString(value);
-            setSearchFilters(searchFilters);
+            setSearch(value);
           }
         }}
         value={value}

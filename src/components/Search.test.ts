@@ -28,9 +28,23 @@ describe("parseSearchString", function () {
     const searchFilters = parseSearchString("stuff type:Melee staff");
     expect(searchFilters).toEqual([
       {
+        type: "text",
+        value: "stuff",
+      },
+      {
         type: "type",
         value: "Melee",
       },
+      {
+        type: "text",
+        value: "staff",
+      },
+    ]);
+  });
+
+  it("should aggregate consecutive texts", function () {
+    const searchFilters = parseSearchString("stuff staff");
+    expect(searchFilters).toEqual([
       {
         type: "text",
         value: "stuff staff",
