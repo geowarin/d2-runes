@@ -24,13 +24,13 @@ function Triangle(): JSX.Element {
 export function App() {
   return (
     <RecoilRoot>
-      <div className="flex flex-col">
+      <div className="flex flex-col h-full">
         <Search />
-        <div className="flex">
-          <div className="w-1/3">
+        <div className="flex h-full">
+          <div className="w-1/5 flex flex-col h-full">
             <RuneList />
           </div>
-          <div className="w-2/3">
+          <div className="w-4/5 h-full">
             <Runewords />
           </div>
         </div>

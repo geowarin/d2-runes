@@ -2,7 +2,11 @@ import runewords from "../data/runewords.json";
 import React, { useMemo } from "react";
 import { RunePng } from "./RunePng";
 import { selector, useRecoilValue } from "recoil";
-import { Column, useSortBy, useTable } from "react-table";
+import DataGrid, {
+  Column,
+  FormatterProps,
+  RowHeightArgs,
+} from "react-data-grid";
 import { SearchFilter, searchFilterState } from "@/components/Search";
 
 export type RunewordType = typeof runewords[number];
@@ -44,86 +48,90 @@ const filteredRunewordsState = selector<RunewordType[]>({
   },
 });
 
-export function Runewords(): JSX.Element {
-  const data = useRecoilValue(filteredRunewordsState);
-  const columns: Column<RunewordType>[] = useMemo(
-    () => [
-      {
-        Header: "Name",
-        accessor: (runeword) => (
-          <div className={`${runeword.isGreat ? "text-yellow-300" : ""}`}>
-            {runeword.name}
-          </div>
-        ),
-      },
-      {
-        Header: "Level",
-        accessor: (runeword) => runeword.level,
-      },
-      {
-        Header: "Type",
-        accessor: (runeword) =>
-          runeword.type.split("/").map((type) => (
-            <div>
+function getColumns(): readonly Column<RunewordType, never>[] {
+  return [
+    {
+      name: "Name",
+      key: "name",
+      formatter: ({ row }: FormatterProps<RunewordType>) => (
+        <div className={`${row.isGreat ? "text-yellow-300" : ""}`}>
+          {row.name}
+        </div>
+      ),
+    },
+    {
+      name: "Level",
+      key: "level",
+    },
+    {
+      name: "Type",
+      key: "type",
+      formatter: ({ row }: FormatterProps<RunewordType>) => (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+            justifyContent: "center",
+          }}
+        >
+          {row.type.split("/").map((type) => (
+            <div className="flex" style={{ lineHeight: "22px" }}>
               <img width={20} src={`/img/icons/${type}.svg`} />
               {type}
             </div>
-          )),
-      },
-      {
-        Header: "Runes",
-        accessor: (runeword) => (
-          <div className="flex">
-            {runeword.runes.map((rune) => (
-              <div className="text-center">
-                <RunePng name={rune} />
-                {rune}
-              </div>
-            ))}
-          </div>
-        ),
-      },
-      {
-        Header: "Stats",
-        accessor: (runeword) => runeword.stats.map((stat) => <div>{stat}</div>),
-      },
-    ],
-    []
-  );
+          ))}
+        </div>
+      ),
+    },
+    {
+      name: "Runes",
+      key: "runes",
+      formatter: ({ row }: FormatterProps<RunewordType>) => (
+        <div>
+          {row.runes.map((rune) => (
+            <div
+              style={{ lineHeight: "20px" }}
+              className="text-center flex justify-center items-center"
+            >
+              <RunePng name={rune} />
+              {rune}
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      name: "Stats",
+      key: "stats",
+      formatter: ({ row }: FormatterProps<RunewordType>) => (
+        <>
+          {row.stats.map((stat) => (
+            <div style={{ lineHeight: "20px" }}>{stat}</div>
+          ))}
+        </>
+      ),
+    },
+  ];
+}
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data }, useSortBy);
+export function Runewords(): JSX.Element {
+  const data = useRecoilValue(filteredRunewordsState);
+  const columns = useMemo(getColumns, []);
 
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                {column.render("Header")}
-                <span>
-                  {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
-                </span>
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <DataGrid
+      className={"rdg-dark"}
+      style={{ height: "100%" }}
+      columns={columns}
+      rows={data}
+      defaultColumnOptions={{
+        sortable: true,
+        resizable: true,
+      }}
+      rowHeight={(args: RowHeightArgs<RunewordType>) =>
+        args.type === "ROW" ? args.row.stats.length * 20 : 20
+      }
+    />
   );
 }
