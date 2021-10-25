@@ -27,10 +27,10 @@ export function App() {
       <div className="flex flex-col h-full">
         <Search />
         <div className="flex h-full">
-          <div className="w-1/5 flex flex-col h-full">
+          <div className="w-40 flex flex-col h-full">
             <RuneList />
           </div>
-          <div className="w-4/5 h-full">
+          <div className="w-full h-full">
             <Runewords />
           </div>
         </div>

@@ -1,11 +1,12 @@
 import runewords from "../data/runewords.json";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { RunePng } from "./RunePng";
 import { selector, useRecoilValue } from "recoil";
 import DataGrid, {
   Column,
   FormatterProps,
   RowHeightArgs,
+  SortColumn,
 } from "react-data-grid";
 import { SearchFilter, searchFilterState } from "@/components/Search";
 
@@ -87,6 +88,7 @@ function getColumns(): readonly Column<RunewordType, never>[] {
     {
       name: "Runes",
       key: "runes",
+      sortable: false,
       formatter: ({ row }: FormatterProps<RunewordType>) => (
         <div>
           {row.runes.map((rune) => (
@@ -104,6 +106,7 @@ function getColumns(): readonly Column<RunewordType, never>[] {
     {
       name: "Stats",
       key: "stats",
+      sortable: false,
       formatter: ({ row }: FormatterProps<RunewordType>) => (
         <>
           {row.stats.map((stat) => (
@@ -115,20 +118,57 @@ function getColumns(): readonly Column<RunewordType, never>[] {
   ];
 }
 
+type Comparator = (a: RunewordType, b: RunewordType) => number;
+
+function getComparator(sortColumn: string): Comparator {
+  switch (sortColumn) {
+    case "name":
+    case "type":
+      return (a, b) => a[sortColumn].localeCompare(b[sortColumn]);
+    case "level":
+      return (a, b) => a[sortColumn] - b[sortColumn];
+    case "runes":
+    case "stats":
+      return (a, b) => a[sortColumn].join().localeCompare(b[sortColumn].join());
+    default:
+      throw new Error(`unsupported sortColumn: "${sortColumn}"`);
+  }
+}
+
 export function Runewords(): JSX.Element {
-  const data = useRecoilValue(filteredRunewordsState);
+  const rows = useRecoilValue(filteredRunewordsState);
   const columns = useMemo(getColumns, []);
+  const [sortColumns, setSortColumns] = useState<readonly SortColumn[]>([]);
+
+  const sortedRows = useMemo((): readonly RunewordType[] => {
+    if (sortColumns.length === 0) return rows;
+
+    const sortedRows = [...rows];
+    sortedRows.sort((a, b) => {
+      for (const sort of sortColumns) {
+        const comparator = getComparator(sort.columnKey);
+        const compResult = comparator(a, b);
+        if (compResult !== 0) {
+          return sort.direction === "ASC" ? compResult : -compResult;
+        }
+      }
+      return 0;
+    });
+    return sortedRows;
+  }, [rows, sortColumns]);
 
   return (
     <DataGrid
       className={"rdg-dark"}
       style={{ height: "100%" }}
       columns={columns}
-      rows={data}
+      rows={sortedRows}
       defaultColumnOptions={{
         sortable: true,
         resizable: true,
       }}
+      sortColumns={sortColumns}
+      onSortColumnsChange={setSortColumns}
       rowHeight={(args: RowHeightArgs<RunewordType>) =>
         args.type === "ROW" ? args.row.stats.length * 20 : 20
       }
