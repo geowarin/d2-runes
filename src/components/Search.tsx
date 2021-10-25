@@ -9,7 +9,7 @@ export interface SearchFilter {
   value: string;
 }
 
-export const searchStringState = atom<string>({
+export const searchStringState = atom({
   key: "searchStringState",
   default: "",
 });

@@ -1,22 +1,8 @@
-import runes from "./data/runes.json";
 import React from "preact/compat";
-import { SelectableRunePng } from "@/components/RunePng";
 import { RecoilRoot } from "recoil";
 import { Runewords } from "@/components/Runewords";
 import { Search } from "@/components/Search";
-
-function RuneList(): JSX.Element {
-  return (
-    <>
-      {runes.map((rune) => (
-        <div className="flex justify-center">
-          <SelectableRunePng name={rune.name} />
-          {rune.name}
-        </div>
-      ))}
-    </>
-  );
-}
+import { RuneList } from "@/components/RuneList";
 
 function Triangle(): JSX.Element {
   return (

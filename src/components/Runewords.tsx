@@ -2,7 +2,7 @@ import runewords from "../data/runewords.json";
 import React, { useMemo } from "react";
 import { RunePng } from "./RunePng";
 import { selector, useRecoilValue } from "recoil";
-import { Column, useTable } from "react-table";
+import { Column, useSortBy, useTable } from "react-table";
 import { SearchFilter, searchFilterState } from "@/components/Search";
 
 export type RunewordType = typeof runewords[number];
@@ -50,7 +50,11 @@ export function Runewords(): JSX.Element {
     () => [
       {
         Header: "Name",
-        accessor: (runeword) => runeword.name,
+        accessor: (runeword) => (
+          <div className={`${runeword.isGreat ? "text-yellow-300" : ""}`}>
+            {runeword.name}
+          </div>
+        ),
       },
       {
         Header: "Level",
@@ -88,16 +92,19 @@ export function Runewords(): JSX.Element {
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+    useTable({ columns, data }, useSortBy);
 
   return (
-    <table {...getTableProps()} style={{ border: "solid 1px gray" }}>
+    <table {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()} className="header">
+              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                 {column.render("Header")}
+                <span>
+                  {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
+                </span>
               </th>
             ))}
           </tr>
@@ -111,18 +118,7 @@ export function Runewords(): JSX.Element {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return (
-                  <td
-                    {...cell.getCellProps()}
-                    style={{
-                      padding: "10px",
-                      border: "solid 1px gray",
-                      // background: "papayawhip",
-                    }}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                );
+                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}
             </tr>
           );

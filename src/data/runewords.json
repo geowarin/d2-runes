@@ -1,5 +1,3 @@
-
-
 [
   {
     "name": "Ancient's Pledge",
@@ -22,6 +20,7 @@
   },
   {
     "name": "Black",
+    "isGreat": true,
     "runes": [
       "Thul",
       "Io",
@@ -139,6 +138,7 @@
   },
   {
     "name": "Leaf",
+    "isGreat": true,
     "runes": [
       "Tir",
       "Ral"
@@ -308,6 +308,7 @@
   },
   {
     "name": "Rhyme",
+    "isGreat": true,
     "runes": [
       "Shael",
       "Eth"
@@ -375,6 +376,7 @@
   },
   {
     "name": "Stealth",
+    "isGreat": true,
     "runes": [
       "Tal",
       "Eth"
@@ -453,6 +455,7 @@
   },
   {
     "name": "Wealth",
+    "isGreat": true,
     "runes": [
       "Lem",
       "Ko",
@@ -470,6 +473,7 @@
   },
   {
     "name": "White",
+    "isGreat": true,
     "runes": [
       "Dol",
       "Io"
@@ -563,6 +567,7 @@
   },
   {
     "name": "Breath of the Dying",
+    "isGreat": true,
     "runes": [
       "Vex",
       "Hel",
@@ -593,6 +598,7 @@
   },
   {
     "name": "Call To Arms",
+    "isGreat": true,
     "runes": [
       "Amn",
       "Ral",
@@ -619,6 +625,7 @@
   },
   {
     "name": "Chains of Honor",
+    "isGreat": true,
     "runes": [
       "Dol",
       "Um",
@@ -761,6 +768,7 @@
   },
   {
     "name": "Enigma",
+    "isGreat": true,
     "runes": [
       "Jah",
       "Ith",
@@ -811,6 +819,7 @@
   },
   {
     "name": "Exile",
+    "isGreat": true,
     "runes": [
       "Vex",
       "Ohm",
@@ -906,6 +915,7 @@
   },
   {
     "name": "Heart of the Oak",
+    "isGreat": true,
     "runes": [
       "Ko",
       "Vex",
@@ -1265,6 +1275,7 @@
   },
   {
     "name": "Fortitude",
+    "isGreat": true,
     "runes": [
       "El",
       "Sol",
@@ -1304,6 +1315,7 @@
   },
   {
     "name": "Grief",
+    "isGreat": true,
     "runes": [
       "Eth",
       "Tir",
@@ -1383,6 +1395,7 @@
   },
   {
     "name": "Infinity",
+    "isGreat": true,
     "runes": [
       "Ber",
       "Mal",
@@ -1407,6 +1420,7 @@
   },
   {
     "name": "Insight",
+    "isGreat": true,
     "runes": [
       "Ral",
       "Tir",
@@ -1432,6 +1446,7 @@
   },
   {
     "name": "Last Wish",
+    "isGreat": true,
     "runes": [
       "Jah",
       "Mal",
@@ -1506,6 +1521,7 @@
   },
   {
     "name": "Obedience",
+    "isGreat": true,
     "runes": [
       "Hel",
       "Ko",
@@ -1619,6 +1635,7 @@
   },
   {
     "name": "Spirit",
+    "isGreat": true,
     "runes": [
       "Tal",
       "Thul",
@@ -1827,6 +1844,7 @@
   },
   {
     "name": "Treachery",
+    "isGreat": true,
     "runes": [
       "Shael",
       "Thul",
