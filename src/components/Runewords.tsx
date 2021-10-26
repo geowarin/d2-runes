@@ -78,7 +78,7 @@ function getColumns(): readonly Column<RunewordType, never>[] {
         >
           {row.type.split("/").map((type) => (
             <div className="flex" style={{ lineHeight: "22px" }}>
-              <img width={20} src={`/img/icons/${type}.svg`} />
+              <img width={20} src={`img/icons/${type}.svg`} />
               {type}
             </div>
           ))}

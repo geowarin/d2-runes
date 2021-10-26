@@ -19,7 +19,7 @@ export function SelectableRunePng({ name }: { name: string }): JSX.Element {
     <img
       style={over ? { filter: "invert(75%)" } : {}}
       onClick={() => addOrReplaceRuneFilter()}
-      src={`/img/runes/${name.toLowerCase()}.png`}
+      src={`img/runes/${name.toLowerCase()}.png`}
       width={30}
       height={30}
       alt={name}
@@ -34,7 +34,7 @@ export function RunePng({ name }: { name: string }) {
   return (
     <img
       style={over ? { filter: "invert(75%)" } : {}}
-      src={`/img/runes/${name.toLowerCase()}.png`}
+      src={`img/runes/${name.toLowerCase()}.png`}
       width={30}
       height={30}
       alt={name}
