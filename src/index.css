@@ -56,11 +56,7 @@ a {
     url('/noise.svg');
 }
 
-table {
-  border: solid 1px gray;
-}
-
-td {
-  padding: 10px;
-  border: 1px solid gray;
+.rdg-dark svg {
+  /* Fix for sort arrows. Tailwind defaults all SVGs to display: block */
+  display: initial;
 }
