@@ -138,7 +138,12 @@ function getComparator(sortColumn: string): Comparator {
 export function Runewords(): JSX.Element {
   const rows = useRecoilValue(filteredRunewordsState);
   const columns = useMemo(getColumns, []);
-  const [sortColumns, setSortColumns] = useState<readonly SortColumn[]>([]);
+  const [sortColumns, setSortColumns] = useState<readonly SortColumn[]>([
+    {
+      columnKey: "level",
+      direction: "ASC",
+    },
+  ]);
 
   const sortedRows = useMemo((): readonly RunewordType[] => {
     if (sortColumns.length === 0) return rows;
@@ -160,7 +165,14 @@ export function Runewords(): JSX.Element {
   return (
     <DataGrid
       className={"rdg-dark"}
-      style={{ height: "100%" }}
+      style={{
+        height: "100%",
+        "--color": "white",
+        "--background-color": "#222a38",
+        "--row-hover-background-color": "#2b2a33",
+        "--header-background-color": "#2b2a33",
+        "--border-color": "gray",
+      }}
       columns={columns}
       rows={sortedRows}
       defaultColumnOptions={{
