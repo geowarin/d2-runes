@@ -90,7 +90,7 @@ function getColumns(): readonly Column<RunewordType, never>[] {
       key: "runes",
       sortable: false,
       formatter: ({ row }: FormatterProps<RunewordType>) => (
-        <div>
+        <div className="flex flex-col h-full justify-center">
           {row.runes.map((rune) => (
             <div
               style={{ lineHeight: "20px" }}
