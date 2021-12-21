@@ -63,10 +63,12 @@ function getColumns(): readonly Column<RunewordType, never>[] {
     {
       name: "Level",
       key: "level",
+      width: 40,
     },
     {
       name: "Type",
       key: "type",
+      width: 160,
       formatter: ({ row }: FormatterProps<RunewordType>) => (
         <div
           style={{
@@ -89,6 +91,7 @@ function getColumns(): readonly Column<RunewordType, never>[] {
       name: "Runes",
       key: "runes",
       sortable: false,
+      width: 60,
       formatter: ({ row }: FormatterProps<RunewordType>) => (
         <div className="flex flex-col h-full justify-center">
           {row.runes.map((rune) => (
