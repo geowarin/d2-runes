@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { atom, DefaultValue, selector, useRecoilState } from "recoil";
 
 const FilterTypes = ["type", "text", "rune"] as const;

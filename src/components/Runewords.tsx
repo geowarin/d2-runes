@@ -1,5 +1,5 @@
 import runewords from "../data/runewords.json";
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { RunePng } from "./RunePng";
 import { selector, useRecoilValue } from "recoil";
 import DataGrid, {

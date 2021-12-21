@@ -1,6 +1,5 @@
 import runes from "@/data/runes.json";
 import { SelectableRunePng } from "@/components/RunePng";
-import React from "react";
 // import runewords from "@/data/runewords.json";
 
 // const greatRunes = new Set(
