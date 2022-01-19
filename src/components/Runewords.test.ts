@@ -1,5 +1,5 @@
 import { match, RunewordType } from "@/components/Runewords";
-import { SearchFilter } from "@/components/Search";
+import { SearchFilter } from "@/store/search.slice";
 
 describe("match", function () {
   const runeword: RunewordType = {

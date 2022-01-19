@@ -1,19 +1,22 @@
-import { useRecoilState } from "recoil";
-import { searchFilterState } from "@/components/Search";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { setSearchFilters } from "@/store/search.slice";
 
 export function SelectableRunePng({ name }: { name: string }): JSX.Element {
-  const [searchFilter, setSearchFilter] = useRecoilState(searchFilterState);
-  const over = searchFilter.some((f) => f.type === "rune" && f.value === name);
+  const searchFilters = useAppSelector((state) => state.search.searchFilters);
+  const dispatch = useAppDispatch();
+
+  const over = searchFilters.some((f) => f.type === "rune" && f.value === name);
+
   function addOrReplaceRuneFilter() {
-    setSearchFilter((filters) => {
-      return filters
-        .filter((f) => f.type !== "rune")
-        .concat({
-          type: "rune",
-          value: name,
-        });
-    });
+    const newFilters = searchFilters
+      .filter((f) => f.type !== "rune")
+      .concat({
+        type: "rune",
+        value: name,
+      });
+    dispatch(setSearchFilters(newFilters));
   }
+
   return (
     <img
       style={over ? { filter: "invert(75%)" } : {}}
@@ -28,8 +31,8 @@ export function SelectableRunePng({ name }: { name: string }): JSX.Element {
 }
 
 export function RunePng({ name }: { name: string }) {
-  const [searchFilter] = useRecoilState(searchFilterState);
-  const over = searchFilter.some((f) => f.type === "rune" && f.value === name);
+  const searchFilters = useAppSelector((state) => state.search.searchFilters);
+  const over = searchFilters.some((f) => f.type === "rune" && f.value === name);
   return (
     <img
       style={over ? { filter: "invert(75%)" } : {}}

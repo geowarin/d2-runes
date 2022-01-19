@@ -1,85 +1,13 @@
 import { useEffect, useState } from "react";
-import { atom, DefaultValue, selector, useRecoilState } from "recoil";
-
-const FilterTypes = ["type", "text", "rune"] as const;
-type FilterType = typeof FilterTypes[number];
-
-export interface SearchFilter {
-  type: FilterType;
-  value: string;
-}
-
-export const searchStringState = atom({
-  key: "searchStringState",
-  default: "",
-});
-
-export const searchFilterState = selector<SearchFilter[]>({
-  key: "searchFilterState",
-  get: ({ get }) => {
-    const search = get(searchStringState);
-    return parseSearchString(search);
-  },
-  set: ({ set }, newValue) => {
-    set(
-      searchStringState,
-      newValue instanceof DefaultValue
-        ? newValue
-        : serializeSearchFilters(newValue)
-    );
-  },
-});
-
-export function serializeSearchFilters(searchFilter: SearchFilter[]): string {
-  return searchFilter
-    .map((filter) => {
-      if (filter.type === "text") {
-        return `${filter.value}`;
-      }
-      return `${filter.type}:${filter.value}`;
-    })
-    .join(" ");
-}
-
-export function parseSearchString(search: string): SearchFilter[] {
-  return search
-    .split(" ")
-    .filter((s) => s !== "")
-    .map((word) => {
-      const [filter, ...rest] = word.split(":");
-      if (FilterTypes.includes(filter as FilterType)) {
-        return {
-          type: filter as FilterType,
-          value: rest.join(),
-        };
-      }
-      return {
-        type: "text" as const,
-        value: word,
-      };
-    })
-    .reduce(mergeConsecutiveTextFilters, [] as SearchFilter[]);
-}
-
-function mergeConsecutiveTextFilters(
-  acc: SearchFilter[],
-  curr: SearchFilter
-): SearchFilter[] {
-  const lastFilter = acc[acc.length - 1];
-  if (
-    curr.type === "text" &&
-    lastFilter !== undefined &&
-    lastFilter.type === "text"
-  ) {
-    lastFilter.value += " " + curr.value;
-  } else {
-    acc.push(curr);
-  }
-  return acc;
-}
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { serializeSearchFilters, setSearchString } from "@/store/search.slice";
 
 export function Search(): JSX.Element {
-  const [search, setSearch] = useRecoilState(searchStringState);
+  const search = useAppSelector((state) =>
+    serializeSearchFilters(state.search.searchFilters)
+  );
+  const dispatch = useAppDispatch();
+
   const [value, setValue] = useState("");
   useEffect(() => {
     setValue(search);
@@ -89,7 +17,7 @@ export function Search(): JSX.Element {
       <input
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            setSearch(value);
+            dispatch(setSearchString(value));
           }
         }}
         value={value}

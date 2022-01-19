@@ -1,14 +1,14 @@
 import runewords from "../data/runewords.json";
 import { useMemo, useState } from "react";
 import { RunePng } from "./RunePng";
-import { selector, useRecoilValue } from "recoil";
 import DataGrid, {
   Column,
   FormatterProps,
   RowHeightArgs,
   SortColumn,
 } from "react-data-grid";
-import { SearchFilter, searchFilterState } from "@/components/Search";
+import { SearchFilter } from "@/store/search.slice";
+import { useAppSelector } from "@/store/hooks";
 
 export type RunewordType = typeof runewords[number];
 
@@ -27,27 +27,6 @@ export function match(filter: SearchFilter, runeword: RunewordType): boolean {
       return runeword.runes.some((r) => r.toLowerCase().includes(searchString));
   }
 }
-
-function filterRunewords(
-  runewords: RunewordType[],
-  filters: SearchFilter[]
-): RunewordType[] {
-  if (filters.length === 0) {
-    return runewords;
-  }
-
-  return runewords.filter((runeword) => {
-    return filters.every((filter) => match(filter, runeword));
-  });
-}
-
-const filteredRunewordsState = selector<RunewordType[]>({
-  key: "filteredRunewordsState",
-  get: ({ get }) => {
-    const searchFilters = get(searchFilterState);
-    return filterRunewords(runewords, searchFilters);
-  },
-});
 
 function getColumns(): readonly Column<RunewordType, never>[] {
   return [
@@ -138,8 +117,23 @@ function getComparator(sortColumn: string): Comparator {
   }
 }
 
+function filterRunewords(
+  runewords: RunewordType[],
+  filters: SearchFilter[]
+): RunewordType[] {
+  if (filters.length === 0) {
+    return runewords;
+  }
+
+  return runewords.filter((runeword) => {
+    return filters.every((filter) => match(filter, runeword));
+  });
+}
+
 export function Runewords(): JSX.Element {
-  const rows = useRecoilValue(filteredRunewordsState);
+  const rows = useAppSelector((state) =>
+    filterRunewords(runewords, state.search.searchFilters)
+  );
   const columns = useMemo(getColumns, []);
   const [sortColumns, setSortColumns] = useState<readonly SortColumn[]>([
     {

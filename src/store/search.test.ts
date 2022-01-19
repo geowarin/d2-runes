@@ -1,4 +1,4 @@
-import { parseSearchString } from "@/components/Search";
+import { parseSearchString } from "@/store/search.slice";
 
 describe("parseSearchString", function () {
   it("should parse empty", function () {

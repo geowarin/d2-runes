@@ -2,6 +2,7 @@ import { ReactSVG } from "react-svg";
 
 export function Rune({ name }: { name: string }): JSX.Element {
   return (
+    // @ts-ignore
     <ReactSVG
       beforeInjection={(svg: SVGSVGElement) => {
         svg.classList.add("fill-color");

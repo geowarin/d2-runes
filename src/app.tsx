@@ -1,8 +1,9 @@
 import React from "preact/compat";
-import { RecoilRoot } from "recoil";
 import { Runewords } from "@/components/Runewords";
 import { Search } from "@/components/Search";
 import { RuneList } from "@/components/RuneList";
+import { Provider } from "react-redux";
+import { store } from "@/store/store";
 
 function Triangle(): JSX.Element {
   return (
@@ -23,7 +24,8 @@ function Triangle(): JSX.Element {
 
 export function App() {
   return (
-    <RecoilRoot>
+    // @ts-ignore
+    <Provider store={store}>
       <div className="flex flex-col h-full">
         <Search />
         <div className="flex h-full">
@@ -35,6 +37,6 @@ export function App() {
           </div>
         </div>
       </div>
-    </RecoilRoot>
+    </Provider>
   );
 }
