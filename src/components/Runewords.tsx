@@ -12,22 +12,6 @@ import { useAppSelector } from "@/store/hooks";
 
 export type RunewordType = typeof runewords[number];
 
-export function match(filter: SearchFilter, runeword: RunewordType): boolean {
-  const searchString = filter.value.toLowerCase();
-  switch (filter.type) {
-    case "text":
-      return (
-        runeword.name.toLowerCase().includes(searchString) ||
-        runeword.stats.join().toLowerCase().includes(searchString) ||
-        runeword.runes.join().toLowerCase().includes(searchString)
-      );
-    case "type":
-      return runeword.type.toLowerCase().includes(searchString);
-    case "rune":
-      return runeword.runes.some((r) => r.toLowerCase().includes(searchString));
-  }
-}
-
 function getColumns(): readonly Column<RunewordType, never>[] {
   return [
     {
@@ -128,6 +112,22 @@ function filterRunewords(
   return runewords.filter((runeword) => {
     return filters.every((filter) => match(filter, runeword));
   });
+}
+
+export function match(filter: SearchFilter, runeword: RunewordType): boolean {
+  const searchString = filter.value.toLowerCase();
+  switch (filter.type) {
+    case "text":
+      return (
+        runeword.name.toLowerCase().includes(searchString) ||
+        runeword.stats.join().toLowerCase().includes(searchString) ||
+        runeword.runes.join().toLowerCase().includes(searchString)
+      );
+    case "type":
+      return runeword.type.toLowerCase().includes(searchString);
+    case "rune":
+      return runeword.runes.some((r) => r.toLowerCase().includes(searchString));
+  }
 }
 
 export function Runewords(): JSX.Element {

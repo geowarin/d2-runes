@@ -8,13 +8,21 @@ describe("match", function () {
     type: "Shields",
     level: 42,
     sockets: "3",
-    stats: [],
+    stats: ["+10 to Energy", "+1 to All Skill Levels"],
   };
 
   it("should match text", function () {
     const filter: SearchFilter = {
       type: "text",
       value: "toto",
+    };
+    expect(match(filter, runeword)).toBeTruthy();
+  });
+
+  it("should match stats", function () {
+    const filter: SearchFilter = {
+      type: "text",
+      value: "energy",
     };
     expect(match(filter, runeword)).toBeTruthy();
   });

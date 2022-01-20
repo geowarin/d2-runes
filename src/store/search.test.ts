@@ -42,12 +42,16 @@ describe("parseSearchString", function () {
     ]);
   });
 
-  it("should aggregate consecutive texts", function () {
+  it("should parse consecutive texts", function () {
     const searchFilters = parseSearchString("stuff staff");
     expect(searchFilters).toEqual([
       {
         type: "text",
-        value: "stuff staff",
+        value: "stuff",
+      },
+      {
+        type: "text",
+        value: "staff",
       },
     ]);
   });

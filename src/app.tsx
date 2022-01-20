@@ -29,10 +29,10 @@ export function App() {
       <div className="flex flex-col h-full">
         <Search />
         <div className="flex h-full">
-          <div className="w-40 flex flex-col h-full">
+          <div className="w-40 flex flex-col overflow-y-scroll">
             <RuneList />
           </div>
-          <div className="w-full h-full">
+          <div className="w-full">
             <Runewords />
           </div>
         </div>

@@ -56,25 +56,7 @@ export function parseSearchString(search: string): SearchFilter[] {
         type: "text" as const,
         value: word,
       };
-    })
-    .reduce(mergeConsecutiveTextFilters, [] as SearchFilter[]);
-}
-
-function mergeConsecutiveTextFilters(
-  acc: SearchFilter[],
-  curr: SearchFilter
-): SearchFilter[] {
-  const lastFilter = acc[acc.length - 1];
-  if (
-    curr.type === "text" &&
-    lastFilter !== undefined &&
-    lastFilter.type === "text"
-  ) {
-    lastFilter.value += " " + curr.value;
-  } else {
-    acc.push(curr);
-  }
-  return acc;
+    });
 }
 
 export default searchSlice.reducer;
