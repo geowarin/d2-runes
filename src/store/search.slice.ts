@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "@/store/store";
 
 interface SearchState {
   searchFilters: SearchFilter[];
@@ -70,3 +71,7 @@ export const { setSearchString, setSearchFilters } = searchSlice.actions;
 //   //   selectCount,
 //   // },
 // };
+export const selectSearchFilters = (state: RootState) =>
+  state.search.searchFilters;
+export const selectSearchAsText = (state: RootState) =>
+  serializeSearchFilters(state.search.searchFilters);

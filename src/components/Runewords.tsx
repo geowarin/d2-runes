@@ -7,7 +7,7 @@ import DataGrid, {
   RowHeightArgs,
   SortColumn,
 } from "react-data-grid";
-import { SearchFilter } from "@/store/search.slice";
+import { SearchFilter, selectSearchFilters } from "@/store/search.slice";
 import { useAppSelector } from "@/store/hooks";
 
 export type RunewordType = typeof runewords[number];
@@ -131,9 +131,8 @@ export function match(filter: SearchFilter, runeword: RunewordType): boolean {
 }
 
 export function Runewords(): JSX.Element {
-  const rows = useAppSelector((state) =>
-    filterRunewords(runewords, state.search.searchFilters)
-  );
+  const searchFilters = useAppSelector(selectSearchFilters);
+  const rows = filterRunewords(runewords, searchFilters);
   const columns = useMemo(getColumns, []);
   const [sortColumns, setSortColumns] = useState<readonly SortColumn[]>([
     {

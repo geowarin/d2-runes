@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { serializeSearchFilters, setSearchString } from "@/store/search.slice";
+import { selectSearchAsText, setSearchString } from "@/store/search.slice";
 
 export function Search(): JSX.Element {
-  const search = useAppSelector((state) =>
-    serializeSearchFilters(state.search.searchFilters)
-  );
+  const search = useAppSelector(selectSearchAsText);
   const dispatch = useAppDispatch();
 
   const [value, setValue] = useState("");
